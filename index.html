@@ -7,19 +7,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --teal: #1b5068;
-    --teal-dark: #0f3444;
-    --teal-light: #246b8a;
-    --amber: #d97c1a;
-    --amber-light: #e8960f;
-    --gold: #c8942c;
-    --gold-light: #e2b84a;
+    --teal: #0b688c;
+    --teal-dark: #073a4f;
+    --teal-light: #168dc0;
+    --amber: #f08818;
+    --amber-light: #ffaa17;
+    --gold: #da9d23;
+    --gold-light: #ffd24c;
     --cream: #faf7f2;
     --white: #ffffff;
     --dark: #0d1e28;
     --text: #2c3e50;
     --text-muted: #5d7a8a;
-    --border: rgba(200,148,44,0.25);
+    --border: rgba(218,157,35,0.25);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -185,9 +185,24 @@
   .reveal { opacity:0; transform:translateY(24px); transition:opacity 0.6s ease, transform 0.6s ease; }
   .reveal.visible { opacity:1; transform:translateY(0); }
 
+  .menu-toggle { display: none; flex-direction: column; justify-content: space-between; width: 28px; height: 20px; cursor: pointer; z-index: 1001; }
+  .menu-toggle span { display: block; height: 3px; width: 100%; background-color: var(--white); border-radius: 3px; transition: all 0.3s ease; }
+  .menu-toggle.active span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
+  .menu-toggle.active span:nth-child(2) { opacity: 0; }
+  .menu-toggle.active span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
+
   @media (max-width: 900px) {
     nav { padding:0 5%; }
-    .nav-links { display:none; }
+    .menu-toggle { display: flex; }
+    .nav-links {
+      position: absolute; top: 72px; left: 0; width: 100%; background: rgba(7,58,79,0.98);
+      flex-direction: column; gap: 0; padding: 0; display: flex;
+      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); transition: clip-path 0.4s ease-in-out;
+    }
+    .nav-links.active { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+    .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.05); width: 100%; text-align: center; }
+    .nav-links a { display: block; padding: 20px 5%; font-size: 0.9rem; }
+    .nav-links a::after { display: none; }
     section { padding:70px 6%; }
     .about-grid, .why-grid, .contact-grid { grid-template-columns:1fr; gap:40px; }
     .services-grid { grid-template-columns:1fr 1fr; }
@@ -248,7 +263,12 @@
     <li><a href="#founders">Our Team</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="tel:+919842205553" class="nav-cta">Get in Touch</a>
+  <div style="display:flex; align-items:center; gap:20px;">
+    <a href="tel:+919842205553" class="nav-cta">Get in Touch</a>
+    <div class="menu-toggle">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -459,6 +479,21 @@
 </a>
 
 <script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    navLinks.classList.toggle('active');
+  });
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+    });
+  });
+
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(entries => {
     entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 60); } });
