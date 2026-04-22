@@ -3,58 +3,704 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Azhar's Amazon Finds</title>
+<title>Unihut Tax & Corpserv — Your Business Support, All under one Hut</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#f4f4f4;color:#333}
-header{background:#111;color:#fff;padding:20px;text-align:center}
-.container{max-width:1100px;margin:auto;padding:20px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.card{background:#fff;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.1);padding:15px;text-align:center}
-.card img{width:100%;border-radius:8px}
-.btn{display:inline-block;margin-top:10px;padding:10px 15px;background:#ff9900;color:#000;text-decoration:none;border-radius:6px;font-weight:bold}
-footer{text-align:center;padding:20px;background:#111;color:#fff;margin-top:40px}
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #0f2040;
+    --navy-light: #162d54;
+    --gold: #c9a84c;
+    --gold-light: #e4c97a;
+    --gold-pale: #f5e8c0;
+    --cream: #faf6ee;
+    --white: #ffffff;
+    --text-muted: #8a9ab5;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 5%;
+    background: rgba(10,22,40,0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    animation: fadeDown 0.8s ease both;
+  }
+  @keyframes fadeDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:none; } }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 0.7rem;
+  }
+  .nav-logo .icon {
+    width: 40px; height: 40px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+  }
+  .nav-logo .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 700; letter-spacing: 0.02em;
+    color: var(--white);
+    line-height: 1;
+  }
+  .nav-logo .sub { font-size: 0.65rem; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 2px; }
+
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+  .nav-links a {
+    color: var(--text-muted); font-size: 0.82rem; letter-spacing: 0.08em;
+    text-transform: uppercase; text-decoration: none;
+    transition: color 0.3s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px;
+    background: var(--gold); transform: scaleX(0); transition: transform 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .nav-cta {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy); padding: 0.6rem 1.4rem;
+    border-radius: 4px; font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; transition: opacity 0.3s, transform 0.3s;
+  }
+  .nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8rem 5% 5rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(201,168,76,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 80% at 10% 80%, rgba(22,45,84,0.9) 0%, transparent 70%),
+      linear-gradient(160deg, #0a1628 0%, #0f2040 50%, #0a1628 100%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: linear-gradient(var(--gold) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--gold) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-ornament {
+    position: absolute; right: -100px; top: 50%; transform: translateY(-50%);
+    width: 600px; height: 600px;
+    border: 1px solid rgba(201,168,76,0.12);
+    border-radius: 50%;
+  }
+  .hero-ornament::before {
+    content: ''; position: absolute; inset: 40px;
+    border: 1px solid rgba(201,168,76,0.08); border-radius: 50%;
+  }
+  .hero-ornament::after {
+    content: ''; position: absolute; inset: 80px;
+    border: 1px solid rgba(201,168,76,0.06); border-radius: 50%;
+  }
+
+  .hero-content { position: relative; max-width: 680px; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    border: 1px solid rgba(201,168,76,0.35);
+    padding: 0.4rem 1rem; border-radius: 20px;
+    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 2rem;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .hero-badge span { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 300; line-height: 1.05;
+    color: var(--white);
+    animation: fadeUp 0.8s 0.35s ease both;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--gold-light);
+    display: block;
+  }
+
+  .hero-divider {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin: 1.8rem 0;
+    animation: fadeUp 0.8s 0.5s ease both;
+  }
+
+  .hero p {
+    font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+    color: var(--text-muted); max-width: 500px;
+    animation: fadeUp 0.8s 0.6s ease both;
+  }
+
+  .hero-actions {
+    display: flex; gap: 1rem; margin-top: 2.5rem;
+    animation: fadeUp 0.8s 0.75s ease both;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy); padding: 0.9rem 2rem;
+    border-radius: 4px; font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 8px 24px rgba(201,168,76,0.25);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(201,168,76,0.35); }
+  .btn-outline {
+    border: 1px solid rgba(201,168,76,0.4); color: var(--gold-light);
+    padding: 0.9rem 2rem; border-radius: 4px; font-size: 0.8rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; transition: background 0.3s, border-color 0.3s;
+  }
+  .btn-outline:hover { background: rgba(201,168,76,0.08); border-color: var(--gold); }
+
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(201,168,76,0.15);
+    animation: fadeUp 0.8s 0.9s ease both;
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem; font-weight: 600; color: var(--gold-light);
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.4rem; }
+
+  @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 6rem 5%; }
+  .section-tag {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem;
+  }
+  .section-tag::before { content:''; width:24px; height:1px; background:var(--gold); }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; line-height: 1.15;
+    color: var(--white); max-width: 560px;
+  }
+  .section-title em { font-style: italic; color: var(--gold-light); }
+
+  /* ── SERVICES ── */
+  .services { background: var(--navy); }
+  .services-intro { max-width: 700px; margin: 0 auto 4rem; text-align: center; }
+  .services-intro .section-tag { justify-content: center; }
+  .services-intro .section-title { margin: 0 auto; text-align: center; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .service-card {
+    background: var(--navy-mid);
+    padding: 2.5rem;
+    transition: background 0.4s;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    transform: scaleX(0); transition: transform 0.4s;
+  }
+  .service-card:hover { background: var(--navy-light); }
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .card-icon {
+    width: 52px; height: 52px; border-radius: 10px;
+    background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05));
+    border: 1px solid rgba(201,168,76,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; margin-bottom: 1.5rem;
+    transition: background 0.4s, border-color 0.4s;
+  }
+  .service-card:hover .card-icon {
+    background: linear-gradient(135deg, rgba(201,168,76,0.25), rgba(201,168,76,0.1));
+    border-color: rgba(201,168,76,0.5);
+  }
+
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 600; color: var(--white);
+    margin-bottom: 1.2rem;
+  }
+
+  .card-list { list-style: none; }
+  .card-list li {
+    font-size: 0.84rem; font-weight: 300; color: var(--text-muted);
+    padding: 0.45rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex; align-items: flex-start; gap: 0.6rem; line-height: 1.5;
+    transition: color 0.3s;
+  }
+  .card-list li:last-child { border-bottom: none; }
+  .card-list li::before {
+    content: ''; width: 5px; height: 5px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0; margin-top: 0.45rem;
+  }
+  .service-card:hover .card-list li { color: #b0bfd4; }
+
+  /* ── WHY US ── */
+  .why { background: var(--navy-mid); }
+  .why-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .why-visual {
+    position: relative; height: 460px;
+  }
+  .why-box {
+    position: absolute;
+    background: var(--navy-light);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 2rem; border-radius: 6px;
+  }
+  .why-box.main { inset: 0 60px 60px 0; }
+  .why-box.accent {
+    bottom: 0; right: 0; width: 220px;
+    background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05));
+    border-color: rgba(201,168,76,0.4);
+    padding: 1.8rem;
+  }
+  .why-box .big-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem; font-weight: 700; color: var(--gold);
+    line-height: 1;
+  }
+  .why-box .label { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.4rem; }
+  .why-box .main-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 300; color: var(--white); margin-bottom: 1rem;
+  }
+  .why-box p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.8; font-weight: 300; }
+
+  .why-features { margin-top: 2.5rem; }
+  .feature {
+    display: flex; gap: 1.2rem; align-items: flex-start;
+    padding: 1.2rem 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .feature:first-child { padding-top: 0; }
+  .feature-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+  }
+  .feature-title { font-size: 0.9rem; font-weight: 500; color: var(--white); margin-bottom: 0.25rem; }
+  .feature-desc { font-size: 0.8rem; color: var(--text-muted); font-weight: 300; line-height: 1.6; }
+
+  /* ── CONTACT ── */
+  .contact { background: var(--navy); }
+  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-info .section-title { margin-bottom: 1.5rem; }
+  .contact-desc { font-size: 0.9rem; color: var(--text-muted); font-weight: 300; line-height: 1.8; margin-bottom: 2.5rem; }
+
+  .contact-items { display: flex; flex-direction: column; gap: 1.2rem; }
+  .contact-item {
+    display: flex; align-items: center; gap: 1.2rem;
+    background: var(--navy-mid); border: 1px solid rgba(201,168,76,0.12);
+    padding: 1.2rem 1.5rem; border-radius: 6px;
+    text-decoration: none; transition: border-color 0.3s, background 0.3s;
+  }
+  .contact-item:hover { border-color: rgba(201,168,76,0.35); background: var(--navy-light); }
+  .contact-item-icon {
+    width: 40px; height: 40px; background: rgba(201,168,76,0.12);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0;
+  }
+  .contact-item-label { font-size: 0.68rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.2rem; }
+  .contact-item-value { font-size: 0.9rem; color: var(--white); font-weight: 400; }
+
+  .contact-form {
+    background: var(--navy-mid);
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 2.5rem; border-radius: 8px;
+  }
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 600; color: var(--white); margin-bottom: 1.8rem;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem; }
+  .form-group label { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: var(--navy-light); border: 1px solid rgba(201,168,76,0.15);
+    color: var(--white); padding: 0.75rem 1rem; border-radius: 4px;
+    font-family: 'Jost', sans-serif; font-size: 0.85rem; font-weight: 300;
+    outline: none; transition: border-color 0.3s;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: rgba(201,168,76,0.5); }
+  .form-group select option { background: var(--navy-mid); }
+  .form-group textarea { resize: vertical; min-height: 90px; }
+  .form-submit {
+    width: 100%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy); padding: 1rem;
+    border: none; border-radius: 4px; font-family: 'Jost', sans-serif;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    cursor: pointer; transition: opacity 0.3s, transform 0.3s;
+    box-shadow: 0 6px 20px rgba(201,168,76,0.2);
+    margin-top: 0.5rem;
+  }
+  .form-submit:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #060f1e;
+    padding: 3rem 5% 2rem;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+  .footer-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+  .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: var(--white); }
+  .footer-tagline { font-size: 0.78rem; color: var(--gold); margin-top: 0.3rem; font-style: italic; }
+  .footer-social { display: flex; gap: 1rem; }
+  .social-link {
+    width: 38px; height: 38px;
+    border: 1px solid rgba(201,168,76,0.25); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); font-size: 0.9rem; text-decoration: none;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .social-link:hover { background: rgba(201,168,76,0.15); border-color: var(--gold); }
+  .footer-bottom {
+    padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.75rem; color: var(--text-muted);
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 4%; }
+    .nav-links { display: none; }
+    .hero { padding: 7rem 4% 4rem; }
+    .hero-ornament { display: none; }
+    .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+    .services-grid { grid-template-columns: 1fr; }
+    .why-inner { grid-template-columns: 1fr; }
+    .why-visual { height: 220px; margin-bottom: 2rem; }
+    .why-box.main { inset: 0 0 60px 0; }
+    .contact-inner { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-top { flex-direction: column; gap: 1.5rem; text-align: center; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s, transform 0.8s; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--navy); }
+  ::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.3); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
 </style>
 </head>
 <body>
 
-<header>
-<h1>Azhar's Amazon Finds</h1>
-<p>Best Home Gym Equipment & Useful Products</p>
-</header>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="icon">🏠</div>
+    <div>
+      <div class="brand">Unihut</div>
+      <div class="sub">Tax & Corpserv</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get Started</a>
+</nav>
 
-<div class="container">
-<h2>Recommended Products</h2>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-ornament"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span></span> Trusted Business Support Partner</div>
+    <h1>Your Business,<em>All Under One Hut.</em></h1>
+    <div class="hero-divider"></div>
+    <p>Expert business registration, corporate compliance, and tax & legal services — everything your business needs, simplified and delivered with precision.</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">Explore Services</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Businesses Served</div>
+      </div>
+      <div>
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">Service Categories</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<div class="grid">
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-intro reveal">
+    <div class="section-tag">What We Offer</div>
+    <h2 class="section-title">Comprehensive <em>Business Solutions</em></h2>
+  </div>
+  <div class="services-grid">
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e" alt="Dumbbells">
-<h3>Adjustable Dumbbells</h3>
-<p>Perfect for building a home gym.</p>
-<a class="btn" href="YOUR_AFFILIATE_LINK_HERE" target="_blank">View on Amazon</a>
-</div>
+    <!-- Card 1 -->
+    <div class="service-card reveal">
+      <div class="card-icon">📋</div>
+      <div class="card-title">Business Registration</div>
+      <ul class="card-list">
+        <li>Company Incorporation (Private Limited, LLP, One Person Company, Partnership Firm)</li>
+        <li>NPO Registration (Section 8 Company, Trust, Society)</li>
+        <li>Import Export Code (IEC)</li>
+        <li>FSSAI Registration</li>
+        <li>MSME Registration</li>
+        <li>Digital Signature Certificate (DSC)</li>
+      </ul>
+    </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1594737625785-a6cbdabd333c" alt="Resistance Bands">
-<h3>Resistance Bands</h3>
-<p>Great for strength and mobility training.</p>
-<a class="btn" href="YOUR_AFFILIATE_LINK_HERE" target="_blank">View on Amazon</a>
-</div>
+    <!-- Card 2 -->
+    <div class="service-card reveal">
+      <div class="card-icon">🏛️</div>
+      <div class="card-title">Corporate Compliance</div>
+      <ul class="card-list">
+        <li>ROC Compliances &amp; Annual Filings</li>
+        <li>Secretarial Audit</li>
+        <li>Due Diligence Report</li>
+        <li>Search Report</li>
+        <li>RBI Compliances</li>
+      </ul>
+    </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd" alt="Pull Up Bar">
-<h3>Doorway Pull-Up Bar</h3>
-<p>Build upper body strength at home.</p>
-<a class="btn" href="YOUR_AFFILIATE_LINK_HERE" target="_blank">View on Amazon</a>
-</div>
+    <!-- Card 3 -->
+    <div class="service-card reveal">
+      <div class="card-icon">⚖️</div>
+      <div class="card-title">Tax &amp; Legal Services</div>
+      <ul class="card-list">
+        <li>GST Registration &amp; Filings</li>
+        <li>Income Tax Filings</li>
+        <li>Trademark Registration</li>
+      </ul>
+      <p style="margin-top:1.5rem; font-size:0.8rem; color: var(--text-muted); font-style:italic; font-weight:300; line-height:1.7;">
+        Need something not listed? We're happy to assist with any business consultation, registration, or compliance requirement.
+      </p>
+    </div>
 
-</div>
-</div>
+  </div>
+</section>
 
+<!-- WHY US -->
+<section class="why" id="why">
+  <div class="why-inner">
+    <div class="why-visual reveal">
+      <div class="why-box main">
+        <div class="main-title">One Roof.<br>Every Service.</div>
+        <p>We bring together expert knowledge in corporate law, taxation, and compliance to offer seamless, integrated support for businesses at every stage of growth.</p>
+      </div>
+      <div class="why-box accent">
+        <div class="big-num">15+</div>
+        <div class="label">Service Offerings</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="section-tag">Why Choose Us</div>
+      <h2 class="section-title">Built for <em>Your Business</em></h2>
+      <div class="why-features">
+        <div class="feature">
+          <div class="feature-icon">⚡</div>
+          <div>
+            <div class="feature-title">Fast Turnaround</div>
+            <div class="feature-desc">We prioritise timely delivery so your business never stalls due to compliance delays.</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔒</div>
+          <div>
+            <div class="feature-title">Confidential & Secure</div>
+            <div class="feature-desc">Your business documents and sensitive data are handled with the strictest confidentiality.</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🎯</div>
+          <div>
+            <div class="feature-title">End-to-End Support</div>
+            <div class="feature-desc">From registration to ongoing compliance, we're with you at every step of your journey.</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">💬</div>
+          <div>
+            <div class="feature-title">Expert Guidance</div>
+            <div class="feature-desc">Our professionals keep up with the latest regulatory changes so you're always compliant.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <div class="section-tag">Reach Out</div>
+      <h2 class="section-title">Let's Build <em>Together</em></h2>
+      <p class="contact-desc">Whether you're starting a new venture or managing an existing business, we're here to make compliance and legalities effortless.</p>
+      <div class="contact-items">
+        <a href="mailto:unihutcorpserv@gmail.com" class="contact-item">
+          <div class="contact-item-icon">✉️</div>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-value">unihutcorpserv@gmail.com</div>
+          </div>
+        </a>
+        <a href="tel:+919842205553" class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div>
+            <div class="contact-item-label">Phone / WhatsApp</div>
+            <div class="contact-item-value">+91 98422 05553</div>
+          </div>
+        </a>
+        <a href="https://instagram.com/unihutcorpserv" target="_blank" class="contact-item">
+          <div class="contact-item-icon">📸</div>
+          <div>
+            <div class="contact-item-label">Instagram</div>
+            <div class="contact-item-value">@unihutcorpserv</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-form reveal">
+      <div class="form-title">Send an Enquiry</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" placeholder="Your Name">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+91 XXXXX XXXXX">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>Service Required</label>
+        <select>
+          <option value="">Select a service…</option>
+          <optgroup label="Business Registration">
+            <option>Company Incorporation</option>
+            <option>NPO Registration</option>
+            <option>Import Export Code (IEC)</option>
+            <option>FSSAI Registration</option>
+            <option>MSME Registration</option>
+            <option>Digital Signature Certificate (DSC)</option>
+          </optgroup>
+          <optgroup label="Corporate Compliance">
+            <option>ROC Compliances & Annual Filings</option>
+            <option>Secretarial Audit</option>
+            <option>Due Diligence Report</option>
+            <option>Search Report</option>
+            <option>RBI Compliances</option>
+          </optgroup>
+          <optgroup label="Tax & Legal Services">
+            <option>GST Registration & Filings</option>
+            <option>Income Tax Filings</option>
+            <option>Trademark Registration</option>
+          </optgroup>
+          <option>Other / Not Listed</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Tell us about your requirement…"></textarea>
+      </div>
+      <button class="form-submit" onclick="handleSubmit(this)">Submit Enquiry →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-<p>Disclosure: As an Amazon Associate I earn from qualifying purchases.</p>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Unihut Tax & Corpserv</div>
+      <div class="footer-tagline">Your Business Support, All under one Hut!!</div>
+    </div>
+    <div class="footer-social">
+      <a href="https://instagram.com/unihutcorpserv" target="_blank" class="social-link">📸</a>
+      <a href="mailto:unihutcorpserv@gmail.com" class="social-link">✉️</a>
+      <a href="tel:+919842205553" class="social-link">📞</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Unihut Tax & Corpserv. All rights reserved.</span>
+    <span>unihutcorpserv@gmail.com &nbsp;|&nbsp; +91 98422 05553</span>
+  </div>
 </footer>
 
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Form submit
+  function handleSubmit(btn) {
+    btn.textContent = '✓ Enquiry Received!';
+    btn.style.background = 'linear-gradient(135deg, #2d7a3a, #4caf64)';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Submit Enquiry →';
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 3500);
+  }
+</script>
 </body>
 </html>
-
